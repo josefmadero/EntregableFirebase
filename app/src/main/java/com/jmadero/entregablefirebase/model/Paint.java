@@ -3,7 +3,7 @@ package com.jmadero.entregablefirebase.model;
 /**
  * Created by digitalhouse on 6/06/16.
  */
-public class Obra {
+public class Paint {
 
     //Solo incluimos aca las variables del JSON que queremos leer. Solo me interesa el id, el titulo,el precio y la imagen.. Lo demás lo ignoramos.
 
@@ -13,10 +13,10 @@ public class Obra {
     private Double price;
     private String thumbnail;
 
-    public Obra(){
+    public Paint(){
     }
 
-    public Obra(String id, String title, Double price, String thumbnail) {
+    public Paint(String id, String title, Double price, String thumbnail) {
         this.id = id;
         this.title = title;
         this.price = price;

@@ -15,7 +15,7 @@ import util.ResultListener;
 /**
  * Created by digitalhouse on 6/06/16.
  */
-public class ObraDAO {
+public class ArtistDAO {
 //    extends SQLiteOpenHelper
 
     private DatabaseReference mDatabase;
@@ -58,7 +58,7 @@ public class ObraDAO {
 //    private static final Integer DATABASEVERSION = 1;
 //
 //    //TABLA PERSONA CON SUS CAMPOS
-//    private static final String TABLEPRODUCT = "Obra";
+//    private static final String TABLEPRODUCT = "Paint";
 //    private static final String ID = "ID";
 //    private static final String TITLE = "title";
 //    private static final String PRICE = "Description";
@@ -68,7 +68,7 @@ public class ObraDAO {
 //    private Context context;
 //
 //    //Constructor que permite crear la BD
-//    public ObraDAO(Context context) {
+//    public ArtistDAO(Context context) {
 //        super(context, DATABASENAME, null, DATABASEVERSION);
 //        this.context = context;
 //    }
@@ -97,14 +97,14 @@ public class ObraDAO {
 //    }
 //
 //    //METODO QUE ME PERMITE AGREGAR UNA LISTA DE PRODUCTOS A MI BASE DE DATOS
-//    public void addProducts(List<Obra> products) {
-//        for (Obra aProduct : products) {
+//    public void addProducts(List<Paint> products) {
+//        for (Paint aProduct : products) {
 //            this.addProduct(aProduct);
 //        }
 //    }
 //
 //    //METODO QUE ME PERMITE AGREGAR UN PRODUCTO A MI MI BD
-//    public void addProduct(Obra product) {
+//    public void addProduct(Paint product) {
 //        SQLiteDatabase database = getWritableDatabase();
 //
 //        ContentValues row = new ContentValues();
@@ -121,25 +121,25 @@ public class ObraDAO {
 //    }
 //
 //    //ESTE METODO CREA LA TAREA ASINCRONA Y PIDE UNA LISTA DE PRODUCTOS
-//    public void getAllProducts(final ResultListener<List<Obra>> listener) {
+//    public void getAllProducts(final ResultListener<List<Paint>> listener) {
 //        RetrieveProductsTask retrieveProductsTask = new RetrieveProductsTask(listener);
 //        retrieveProductsTask.execute();
 //    }
 //
 //    //ESTA CLASE ES UNA CLASE QUE ME PERMITE GENERAR UNA TAREA ASINCRONICA. ES DECIR, ESTA TAREA SE EJECUTARA
 //// INDEPENDIENTEMENTE DE LO QUE ESTE HACIENDO COMO ACTIVIDAD PRINCIPAL
-//    class RetrieveProductsTask extends AsyncTask<String, Void, List<Obra>> {
+//    class RetrieveProductsTask extends AsyncTask<String, Void, List<Paint>> {
 //
-//        private ResultListener<List<Obra>> listener;
+//        private ResultListener<List<Paint>> listener;
 //
-//        public RetrieveProductsTask(ResultListener<List<Obra>> listener) {
+//        public RetrieveProductsTask(ResultListener<List<Paint>> listener) {
 //            this.listener = listener;
 //        }
 //
 //        //Esto método se ejecuta mientras sigue corriendo la tarea principal. Aqui lo que haremos es conectarnos
 //        // al servicio y descargar la lista.
 //        @Override
-//        protected List<Obra> doInBackground(String... params) {
+//        protected List<Paint> doInBackground(String... params) {
 //
 //            HTTPConnectionManager connectionManager = new HTTPConnectionManager();
 //            String input = null;
@@ -151,14 +151,14 @@ public class ObraDAO {
 //            }
 //
 //            Gson gson = new Gson();
-//            ObrasContainer productsContainer = gson.fromJson(input, ObrasContainer.class);
+//            PaintContainer productsContainer = gson.fromJson(input, PaintContainer.class);
 //
 //            return productsContainer.getResults();
 //        }
 //
 //        //Una vez terminado el procesamiento, le avisamos al listener que ya tiene la lista disponible.
 //        @Override
-//        protected void onPostExecute(List<Obra> productList) {
+//        protected void onPostExecute(List<Paint> productList) {
 //
 //            addProducts(productList);
 //            this.listener.finish(productList);

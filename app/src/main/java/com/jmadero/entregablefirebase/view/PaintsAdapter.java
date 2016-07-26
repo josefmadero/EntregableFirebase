@@ -18,12 +18,12 @@ import java.util.List;
 /**
  * Created by andres on 22/06/16.
  */
-public class AdapterObras extends RecyclerView.Adapter{
+public class PaintsAdapter extends RecyclerView.Adapter{
 
     private List<Product> productList;
     private Context context;
 
-    public AdapterObras(Context context, List<Product> productList) {
+    public PaintsAdapter(Context context, List<Product> productList) {
 
         this.context = context;
         this.productList = new ArrayList<>();

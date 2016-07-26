@@ -14,7 +14,7 @@ import java.util.List;
 
 import util.ResultListener;
 
-public class ObrasActivity extends AppCompatActivity {
+public class PaintsActivity extends AppCompatActivity {
 
 //    ver fotos del miercoles, y en el main pedirle al controller la lista de artistas, y para cada artista(for) pedir sus obras y setearle el nombre del artista como author (poner atributo author a la obra)
 //

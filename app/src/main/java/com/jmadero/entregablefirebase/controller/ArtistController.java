@@ -10,7 +10,7 @@ import util.ResultListener;
 /**
  * Created by digitalhouse on 6/06/16.
  */
-public class ObraController {
+public class ArtistController {
 
     public void getProductsList(final ResultListener<List<Product>> listenerFromView) {
         ProductDAO productDAO = new ProductDAO();
@@ -23,11 +23,11 @@ public class ObraController {
     }
 
 
-//    public void addMovie(final ResultListener<Obra> listenerFromView,Obra product) {
-//        ObraDAO productDAO = new ObraDAO();
-//        productDAO.addProduct(new ResultListener<Obra>() {
+//    public void addMovie(final ResultListener<Paint> listenerFromView,Paint product) {
+//        ArtistDAO productDAO = new ArtistDAO();
+//        productDAO.addProduct(new ResultListener<Paint>() {
 //            @Override
-//            public void finish(Obra resultado) {
+//            public void finish(Paint resultado) {
 //                listenerFromView.finish(resultado);
 //            }
 //        }, product);
