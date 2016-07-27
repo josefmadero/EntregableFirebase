@@ -1,16 +1,18 @@
 package com.jmadero.entregablefirebase.dao;
 
-import com.ejemplo.mercadoLibre.model.Product;
-import com.ejemplo.mercadoLibre.model.ProductsContainer;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jmadero.entregablefirebase.model.Artist;
+import com.jmadero.entregablefirebase.model.ArtistContainer;
 
 import java.util.List;
 
 import util.ResultListener;
+
 
 /**
  * Created by digitalhouse on 6/06/16.
@@ -20,15 +22,15 @@ public class ArtistDAO {
 
     private DatabaseReference mDatabase;
 
-    public void getProductsFromFireBase(final ResultListener<List<Product>> listenerFromController) {
+    public void getArtistsFromFireBase(final ResultListener<List<Artist>> listenerFromController) {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        ProductsContainer productsContainer = dataSnapshot.getValue(ProductsContainer.class);
-                        listenerFromController.finish(productsContainer.getResults());
+                        ArtistContainer artistsContainer = dataSnapshot.getValue(ArtistContainer.class);
+                        listenerFromController.finish(artistsContainer.getArtists());
                     }
 
                     @Override
@@ -37,21 +39,21 @@ public class ArtistDAO {
                 });
     }
 
-    public void addProduct(final ResultListener<Product> listenerFromController, final Product product) {
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("results").push().setValue(product, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                if (databaseError != null) {
-                    listenerFromController.finish(product);
-                } else {
-                    listenerFromController.finish(null);
-                }
-
-            }
-        });
-    }
+//    public void addProduct(final ResultListener<Product> listenerFromController, final Product product) {
+//
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase.child("results").push().setValue(product, new DatabaseReference.CompletionListener() {
+//            @Override
+//            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+//                if (databaseError != null) {
+//                    listenerFromController.finish(product);
+//                } else {
+//                    listenerFromController.finish(null);
+//                }
+//
+//            }
+//        });
+}
 //
 //    //CONSTANTES PARA LOS NOMBRES DE LA BD Y LOS CAMPOS
 //    private static final String DATABASENAME = "ProductsDB";
@@ -164,7 +166,7 @@ public class ArtistDAO {
 //            this.listener.finish(productList);
 //        }
 //    }
-}
+
 
 
 

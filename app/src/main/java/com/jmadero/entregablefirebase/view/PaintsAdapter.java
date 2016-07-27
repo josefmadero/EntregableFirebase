@@ -1,6 +1,8 @@
 package com.jmadero.entregablefirebase.view;
 
 import android.content.Context;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ejemplo.mercadoLibre.R;
-import com.ejemplo.mercadoLibre.model.Product;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jmadero.entregablefirebase.R;
+import com.jmadero.entregablefirebase.model.Paint;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -20,56 +27,80 @@ import java.util.List;
  */
 public class PaintsAdapter extends RecyclerView.Adapter{
 
-    private List<Product> productList;
+    private List<Paint> paintsList;
     private Context context;
+    FirebaseStorage storage;
+    StorageReference storageRef;
 
-    public PaintsAdapter(Context context, List<Product> productList) {
+    public PaintsAdapter(Context context, List<Paint> paintsList) {
 
         this.context = context;
-        this.productList = new ArrayList<>();
+        this.paintsList = new ArrayList<>();
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setPaintsList(List<Paint> paintsList) {
+        this.paintsList = paintsList;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_detalle, parent, false);
-        ProductViewHolder unTitularViewHolder = new ProductViewHolder(itemView);
+        PaintViewHolder unTitularViewHolder = new PaintViewHolder(itemView);
         return unTitularViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Product aProduct = productList.get(position);
-        ProductViewHolder unTitularViewHolder = (ProductViewHolder) holder;
-        unTitularViewHolder.bindProduct(aProduct, context);
+        final Paint aPaint = paintsList.get(position);
+        if(aPaint.getLink().equals(null)){
+            storageRef.child(aPaint.getImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    // Got the download URL
+                    aPaint.setLink(uri.toString());
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+
+        }
+        PaintViewHolder aPaintViewHolder = (PaintViewHolder) holder;
+        aPaintViewHolder.bindPaint(aPaint, context);
+
+
+
+//        aca llamas al controller y le pedis el url, si esta null lo pide a firebase,
+//                y se lo setea a la paint (agregar atributo url que por defecto es null porque no esta en el json)
+//        si no es null, que use ese.
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return paintsList.size();
     }
 
-    private static class ProductViewHolder extends RecyclerView.ViewHolder{
+    private static class PaintViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView textViewTitulo;
-        private TextView textViewPrice;
+        private TextView textViewName;
+        private TextView textViewArtist;
         private ImageView imageViewThumbnail;
 
-        public ProductViewHolder(View itemView) {
+        public PaintViewHolder(View itemView) {
             super(itemView);
-            textViewTitulo = (TextView) itemView.findViewById(R.id.textViewTitulo);
-            textViewPrice = (TextView) itemView.findViewById(R.id.textViewPrice);
+            textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            textViewArtist = (TextView) itemView.findViewById(R.id.textViewArtist);
             imageViewThumbnail = (ImageView) itemView.findViewById(R.id.imageViewThumbnail);
         }
 
-        public void bindProduct(Product aProduct, Context context){
-            textViewTitulo.setText(aProduct.getTitle());
-            textViewPrice.setText(aProduct.getPrice().toString());
-            Picasso.with(context).load(aProduct.getThumbnail()).into(imageViewThumbnail);
+        public void bindPaint(Paint aPaint, Context context){
+            textViewName.setText(aPaint.getName());
+            textViewArtist.setText(aPaint.getArtist());
+            Picasso.with(context).load(aPaint.getLink()).into(imageViewThumbnail);
+
         }
     }
 }

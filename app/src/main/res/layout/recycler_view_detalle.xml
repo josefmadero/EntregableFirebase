@@ -6,12 +6,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewTitulo"/>
+        android:id="@+id/textViewName"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewPrice"/>
+        android:id="@+id/textViewArtist"/>
 
     <ImageView
         android:layout_width="100dp"

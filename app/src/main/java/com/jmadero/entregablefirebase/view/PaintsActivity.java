@@ -5,14 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.ejemplo.mercadoLibre.R;
-import com.ejemplo.mercadoLibre.controller.ProductController;
-import com.ejemplo.mercadoLibre.model.Product;
+
+import com.jmadero.entregablefirebase.R;
+import com.jmadero.entregablefirebase.controller.ArtistController;
+import com.jmadero.entregablefirebase.model.Artist;
+import com.jmadero.entregablefirebase.model.Paint;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import util.ResultListener;
+
 
 public class PaintsActivity extends AppCompatActivity {
 
@@ -24,13 +27,12 @@ public class PaintsActivity extends AppCompatActivity {
 
 
 
-
-    private AdapterObras productsRecyclerAdapter;
+    private PaintsAdapter paintsRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_paints);
 
         RecyclerView productsRecycler = (RecyclerView) findViewById(R.id.recyclerView);
         productsRecycler.setHasFixedSize(true);
@@ -38,20 +40,20 @@ public class PaintsActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         productsRecycler.setLayoutManager(layoutManager);
 
-        productsRecyclerAdapter = new AdapterObras(getApplicationContext(), new ArrayList<Product>());
-        productsRecycler.setAdapter(productsRecyclerAdapter);
+        paintsRecyclerAdapter = new PaintsAdapter(getApplicationContext(), new ArrayList<Paint>());
+        productsRecycler.setAdapter(paintsRecyclerAdapter);
 
-        ProductController productController = new ProductController();
-        productController.getProductsList(new ResultListener<List<Product>>() {
+        ArtistController artistController = new ArtistController();
+        artistController.getPaintsList(new ResultListener<List<Paint>>() {
             @Override
-            public void finish(List<Product> resultado) {
-                updateRecyclerView(resultado);
+            public void finish(List<Paint> paintsList) {
+                updateRecyclerView(paintsList);
             }
         });
     }
 
-    private void updateRecyclerView(List<Product> products) {
-        productsRecyclerAdapter.setProductList(products);
-        productsRecyclerAdapter.notifyDataSetChanged();
+    private void updateRecyclerView(List<Paint> paints) {
+        paintsRecyclerAdapter.setPaintsList(paints);
+        paintsRecyclerAdapter.notifyDataSetChanged();
     }
 }

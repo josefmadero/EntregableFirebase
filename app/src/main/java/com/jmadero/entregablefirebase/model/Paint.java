@@ -1,5 +1,7 @@
 package com.jmadero.entregablefirebase.model;
 
+import android.provider.MediaStore;
+
 /**
  * Created by digitalhouse on 6/06/16.
  */
@@ -8,50 +10,50 @@ public class Paint {
     //Solo incluimos aca las variables del JSON que queremos leer. Solo me interesa el id, el titulo,el precio y la imagen.. Lo demás lo ignoramos.
 
 
-    private String id;
-    private String title;
-    private Double price;
-    private String thumbnail;
+    private String image;
+    private String name;
+    private String artist;
+    private String link;
+
 
     public Paint(){
     }
 
-    public Paint(String id, String title, Double price, String thumbnail) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.thumbnail = thumbnail;
+    public Paint(String image, String name, String artist) {
+        this.image = image;
+        this.name = name;
+        this.artist = artist;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public String getImage() {
+        return image;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTitle() {
-        return title;
+    public String getArtist() {
+        return artist;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getLink() {
+        return link;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setLink(String link) {
+        this.link = link;
     }
 }

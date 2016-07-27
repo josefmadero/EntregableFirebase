@@ -1,23 +1,34 @@
 package com.jmadero.entregablefirebase.controller;
 
-import com.ejemplo.mercadoLibre.dao.ProductDAO;
-import com.ejemplo.mercadoLibre.model.Product;
+
+import com.jmadero.entregablefirebase.dao.ArtistDAO;
+import com.jmadero.entregablefirebase.model.Artist;
+import com.jmadero.entregablefirebase.model.Paint;
 
 import java.util.List;
 
 import util.ResultListener;
+
 
 /**
  * Created by digitalhouse on 6/06/16.
  */
 public class ArtistController {
 
-    public void getProductsList(final ResultListener<List<Product>> listenerFromView) {
-        ProductDAO productDAO = new ProductDAO();
-        productDAO.getProductsFromFireBase(new ResultListener<List<Product>>() {
+    List<Paint> paintsList;
+
+    public void getPaintsList(final ResultListener<List<Paint>> listenerFromView) {
+        ArtistDAO artistDAO = new ArtistDAO();
+        artistDAO.getArtistsFromFireBase(new ResultListener<List<Artist>>() {
             @Override
-            public void finish(List<Product> resultado) {
-                listenerFromView.finish(resultado);
+            public void finish(List<Artist> artistsList) {
+                for (Artist artist:artistsList) {
+                    for (Paint paint:artist.getPaints()) {
+                        paint.setArtist(artist.getName());
+                        paintsList.add(paint);
+                    }
+                }
+                listenerFromView.finish(paintsList);
             }
         });
     }

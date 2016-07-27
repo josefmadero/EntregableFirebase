@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.jmadero.entregablefirebase.view.PaintsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-}
+
     public void showProductsActivity(){
-        startActivity(new Intent(this,ProductsActivity.class));
+        startActivity(new Intent(this,PaintsActivity.class));
     }
 
     @Override
@@ -141,3 +142,5 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+}
