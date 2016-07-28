@@ -1,4 +1,4 @@
-package util;
+package com.jmadero.entregablefirebase.util;
 
 public class DAOException extends Exception {
 

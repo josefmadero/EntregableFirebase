@@ -1,4 +1,4 @@
-package util;
+package com.jmadero.entregablefirebase.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
