@@ -11,7 +11,7 @@ import com.jmadero.entregablefirebase.model.ArtistContainer;
 
 import java.util.List;
 
-import util.ResultListener;
+import com.jmadero.entregablefirebase.util.ResultListener;
 
 
 /**

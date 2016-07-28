@@ -8,13 +8,12 @@ import android.support.v7.widget.RecyclerView;
 
 import com.jmadero.entregablefirebase.R;
 import com.jmadero.entregablefirebase.controller.ArtistController;
-import com.jmadero.entregablefirebase.model.Artist;
 import com.jmadero.entregablefirebase.model.Paint;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import util.ResultListener;
+import com.jmadero.entregablefirebase.util.ResultListener;
 
 
 public class PaintsActivity extends AppCompatActivity {
@@ -39,9 +38,9 @@ public class PaintsActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         productsRecycler.setLayoutManager(layoutManager);
-
         paintsRecyclerAdapter = new PaintsAdapter(getApplicationContext(), new ArrayList<Paint>());
         productsRecycler.setAdapter(paintsRecyclerAdapter);
+
 
         ArtistController artistController = new ArtistController();
         artistController.getPaintsList(new ResultListener<List<Paint>>() {
@@ -50,6 +49,9 @@ public class PaintsActivity extends AppCompatActivity {
                 updateRecyclerView(paintsList);
             }
         });
+
+
+
     }
 
     private void updateRecyclerView(List<Paint> paints) {

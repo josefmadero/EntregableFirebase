@@ -7,8 +7,6 @@ import android.provider.MediaStore;
  */
 public class Paint {
 
-    //Solo incluimos aca las variables del JSON que queremos leer. Solo me interesa el id, el titulo,el precio y la imagen.. Lo demás lo ignoramos.
-
 
     private String image;
     private String name;
@@ -19,10 +17,11 @@ public class Paint {
     public Paint(){
     }
 
-    public Paint(String image, String name, String artist) {
+    public Paint(String image, String name, String artist, String link) {
         this.image = image;
         this.name = name;
         this.artist = artist;
+        this.link = link;
     }
 
     public String getImage() {

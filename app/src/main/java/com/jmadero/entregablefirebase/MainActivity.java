@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    showProductsActivity();
+                    showPaintsActivity();
                     Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void showProductsActivity(){
+    public void showPaintsActivity(){
         startActivity(new Intent(this,PaintsActivity.class));
     }
 

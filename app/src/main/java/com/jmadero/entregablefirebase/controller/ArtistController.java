@@ -5,9 +5,10 @@ import com.jmadero.entregablefirebase.dao.ArtistDAO;
 import com.jmadero.entregablefirebase.model.Artist;
 import com.jmadero.entregablefirebase.model.Paint;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import util.ResultListener;
+import com.jmadero.entregablefirebase.util.ResultListener;
 
 
 /**
@@ -15,7 +16,7 @@ import util.ResultListener;
  */
 public class ArtistController {
 
-    List<Paint> paintsList;
+    List<Paint> paintsList = new ArrayList<>();
 
     public void getPaintsList(final ResultListener<List<Paint>> listenerFromView) {
         ArtistDAO artistDAO = new ArtistDAO();
@@ -32,6 +33,7 @@ public class ArtistController {
             }
         });
     }
+
 
 
 //    public void addMovie(final ResultListener<Paint> listenerFromView,Paint product) {

@@ -1,5 +1,6 @@
 package com.jmadero.entregablefirebase.view;
 
+import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +34,9 @@ public class PaintsAdapter extends RecyclerView.Adapter{
     FirebaseStorage storage;
     StorageReference storageRef;
 
+
+
+
     public PaintsAdapter(Context context, List<Paint> paintsList) {
 
         this.context = context;
@@ -52,8 +57,12 @@ public class PaintsAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        //Aca obtengo mi instancia del Storage en FireBase
+        storage = FirebaseStorage.getInstance();
+        //Aca obtengo mi referencia al Storage en FireBase, seria como pararme dentro del la carpeta raiz
+        storageRef = storage.getReferenceFromUrl("gs://entregablefirebase-50c58.appspot.com");
         final Paint aPaint = paintsList.get(position);
-        if(aPaint.getLink().equals(null)){
+        if(aPaint.getLink() == null){
             storageRef.child(aPaint.getImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {

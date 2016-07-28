@@ -1,20 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewName"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewArtist"/>
+<android.support.v7.widget.CardView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+card_view:cardUseCompatPadding="true">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageViewThumbnail"/>
-</LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/noimage3"
+        android:id="@+id/imageViewThumbnail"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:id="@+id/layout_RecyclerView_detalle_shareButton"
+        android:src="@drawable/share"
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textSize="20dp"
+            android:id="@+id/textViewName"
+            android:background="#c8616161"
+            android:textColor="#FFFFFF"
+            android:text="hola"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textSize="20dp"
+            android:id="@+id/textViewArtist"
+            android:background="#c8616161"
+            android:textColor="#FFFFFF"
+            android:text="chau"
+            />
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
