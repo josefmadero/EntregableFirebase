@@ -1,4 +1,4 @@
-package com.jmadero.entregablefirebase;
+package com.jmadero.entregablefirebase.view;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -24,9 +24,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.jmadero.entregablefirebase.R;
 import com.jmadero.entregablefirebase.view.PaintsActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    showPaintsActivity();
+//                    showPaintsActivity();
                     Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
