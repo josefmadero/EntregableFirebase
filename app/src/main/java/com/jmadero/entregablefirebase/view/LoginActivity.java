@@ -25,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jmadero.entregablefirebase.R;
-import com.jmadero.entregablefirebase.view.PaintsActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");

@@ -184,8 +184,20 @@ public class EasyImage {
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 setUsesPermission();
-            } else {
-                Toast.makeText(contextActivity, "No tienes los permisos necesarios en tu AndroidManifest.xml", Toast.LENGTH_SHORT).show();
+                File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                String pictureImagePath = storageDir.getAbsolutePath() + "/" + imageName;
+                file = new File(pictureImagePath);
+                PackageManager pm = activity.getPackageManager();
+
+                if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) || pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT)) {
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                    activity.startActivityForResult(cameraIntent, TAKE_IMAGE_REQUEST);
+                }
+
+                else {
+                    Toast.makeText(contextActivity, "No tienes los permisos necesarios en tu AndroidManifest.xml", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

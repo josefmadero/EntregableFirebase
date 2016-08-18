@@ -10,24 +10,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UploadPictureActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="obtener imagen"
-        android:onClick="getImage"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="upload"
-        android:onClick="upload"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="download"
-        android:onClick="download"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="obtener imagen"
+            android:onClick="getImage"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upload"
+            android:onClick="upload"
+            android:id="@+id/upload_button"/>
+        <!--android:visibility="gone"-->
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="download"-->
+        <!--android:onClick="download"-->
+        <!--/>-->
+
+    </LinearLayout>
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
